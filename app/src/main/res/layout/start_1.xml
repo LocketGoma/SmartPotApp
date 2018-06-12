@@ -1,0 +1,30 @@
+<!-- 앱 소개 화면 1 -->
+<LinearLayout
+    xmlns:android = "http://schemas.android.com/apk/res/android"
+    android:layout_width = "match_parent"
+    android:layout_height = "match_parent"
+    android:padding = "20dp"
+    android:gravity = "center"
+    android:orientation = "vertical"
+    xmlns:tools = "http://schemas.android.com/tools"
+    tools:context="com.resetframe.smartpotapp.StartActivity">fjun
+
+    <TextView
+        android:layout_width = "match_parent"
+        android:layout_height = "wrap_content"
+        android:layout_marginBottom = "5dp"
+        android:gravity = "center"
+        android:text = "환영합니다!"
+        android:textColor = "@color/colorPrimary"
+
+        android:textSize = "20sp"
+        android:textStyle = "bold"/>
+
+    <TextView
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:gravity="start"
+        android:text="SPot 앱은 여러분들의 SmartPot을 관리하기 위한 애플리캐이션입니다." />
+
+</LinearLayout>

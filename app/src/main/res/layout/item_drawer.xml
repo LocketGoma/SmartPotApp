@@ -1,0 +1,106 @@
+<!-- 식물 목록 페이지의 항목 뷰 -->
+<!-- 아니 이거 프레임이 아니라 아이템이잖아 -->
+
+<layout
+    xmlns:android = "http://schemas.android.com/apk/res/android"
+    xmlns:tools = "http://schemas.android.com/tools">
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="15dp"
+    android:baselineAligned="false">
+
+    <LinearLayout
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <!-- 여기에 이미지가 들어갈 뷰를 만들어줍시다. 밑의 image_record가 실제로 이미지가 들어갈 부분.-->
+        <TextView
+            android:id="@+id/image_record_pot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            tools:text="ㅁ" />
+
+        <!-- 레코드잖아? 그러니까 record_name-->
+        <TextView
+            android:id="@+id/txt_record_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            tools:text="식물 이름" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="186dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/txt_record_date"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:textSize="13sp"
+                tools:text="심은 날짜" />
+
+            <TextView
+                android:id="@+id/txt_record_type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:textSize="13sp"
+                tools:text="식물 종류명" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+
+            android:orientation="horizontal">
+            <!-- 여기에는 수치 바 or 수치값이 들어갑니다 -->
+            <!-- 일단은 수치 '값' 으로 -->
+            <TextView
+                android:id="@+id/txt_record_light"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:textSize="13sp"
+                tools:text="밝기 %d %" />
+
+            <TextView
+                android:id="@+id/txt_record_hume"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:textSize="13sp"
+                tools:text="습도 %d %" />
+
+            <TextView
+                android:id="@+id/txt_record_temper"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:textSize="13sp"
+                tools:text="온도 %d 'C" />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
+
+</layout>
