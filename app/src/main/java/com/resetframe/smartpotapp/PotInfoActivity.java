@@ -183,8 +183,8 @@ public class PotInfoActivity extends Activity {
                     @NonNull
                     File file = new File(Environment.getExternalStorageDirectory(),url);
 
-                    mlmageCaptureUri = FileProvider.getUriForFile(PotInfoActivity.this,"com.resetframe.smartpotapp.fileprovider",file);
-                    intent.putExtra(MediaStore.EXTRA_OUTPUT, mlmageCaptureUri);
+                    mlmageCaptureUri = FileProvider.getUriForFile(PotInfoActivity.this,"com.resetframe.smartpotapp",file);
+                    intent.putExtra(android.provider.MediaStore.EXTRA_OUTPUT, mlmageCaptureUri); // 왜 Null?
                     startActivityForResult(intent,11);
                 }
             };
