@@ -1,34 +1,24 @@
 package com.resetframe.smartpotapp;
 
-import android.annotation.TargetApi;
-import android.app.Fragment;
+import android.app.Activity;
 import android.content.Intent;
-import android.database.DataSetObserver;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
-import android.support.v7.app.AppCompatActivity;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.List;
 
-import data.Record;
 import data.drawerItems;
 
 
 
 //recordfragment 참고
-public class DrawerActivity extends AppCompatActivity {
+public class DrawerActivity extends Activity {
 //1번 페이지. 화분 목록페이지.
 
     //private ArrayAdapter<Record> adapter; //<-나중에 부활
@@ -95,8 +85,7 @@ public class DrawerActivity extends AppCompatActivity {
                     intent.putExtra("hume",items.get(count-1).getHume());
                     intent.putExtra("temp",items.get(count-1).getTemper());
 
-                    startActivity(intent);
-
+                    startActivityForResult(intent,1);
                 }
             }
         });
@@ -121,6 +110,21 @@ public class DrawerActivity extends AppCompatActivity {
 
 
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode!=resultCode){
+            Toast.makeText(DrawerActivity.this,"갱신에 실패하였습니다.",Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+
+
+
+    }
+
+
 
 }
 

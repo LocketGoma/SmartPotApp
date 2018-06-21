@@ -1,12 +1,7 @@
 package data;
 
 import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.TextView;
-
-import com.resetframe.smartpotapp.R;
 
 import java.util.UUID;
 
@@ -17,22 +12,23 @@ public class drawerItems extends LinearLayout{
     private String name; //식물 애칭
     private String typename; //식물 종류
     private String date;    //심은 일자
-    private double light; //현 밝기값
-    private double hume; //현 습도값
+
     private double temper; //현 온도값
+    private double hume; //현 습도값
+    private double light; //현 밝기값
 
     public drawerItems(Context context){
         super(context);
 
         name = "DefaultName";
         date = "0000-00-00";
-        light = 50;
+        temper = 20;
         hume = 50;
-        temper = 50;
+        light = 200;
 
     }
 
-    public drawerItems(Context context, UUID id, String name, String typename, double light, double hume, double temper) {
+    public drawerItems(Context context, UUID id, String name, String typename, double temper, double hume, double light) {
         super(context);
         this.id = id;
         this.name = name;
@@ -53,15 +49,15 @@ public class drawerItems extends LinearLayout{
         return typename;
     }
 
-    public double getLight() {
-        return light;
+    public double getTemper() {
+        return temper;
     }
 
     public double getHume() {
         return hume;
     }
 
-    public double getTemper() {
-        return temper;
+    public double getLight() {
+        return light;
     }
 }
