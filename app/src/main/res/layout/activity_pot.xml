@@ -13,7 +13,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="280dp"
         android:orientation="horizontal">
         <Button
             android:id="@+id/pot_prev"
@@ -21,14 +21,14 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="Prev" />
-        <TextView
+        <ImageView
             android:id="@+id/image_record_pot"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="280dp"
+            android:layout_height="280dp"
             android:maxLines="1"
             android:textSize="30sp"
             android:textStyle="bold"
-            tools:text="(화분이미지정보)" />
+            android:src="@drawable/default_pot" />
         <Button
             android:id="@+id/pot_next"
             android:layout_width="20dp"
@@ -56,12 +56,12 @@
                 android:textSize="30sp"
                 android:textStyle="bold"
                 tools:text="(정보 1)" />
-            <Button
+            <ImageView
                 android:id="@+id/pot_info1"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_weight="1"
-                android:text="Next" />
+                android:src="@drawable/bar_light" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -76,12 +76,12 @@
                 android:textSize="30sp"
                 android:textStyle="bold"
                 tools:text="(정보 1)" />
-            <Button
+            <ImageView
                 android:id="@+id/pot_info2"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_weight="1"
-                android:text="Next" />
+                android:src="@drawable/bar_temp" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -96,12 +96,12 @@
                 android:textSize="30sp"
                 android:textStyle="bold"
                 tools:text="(정보 1)" />
-            <Button
+            <ImageView
                 android:id="@+id/pot_info3"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_weight="1"
-                android:text="Next" />
+                android:src="@drawable/bar_humid" />
         </LinearLayout>
 
 
