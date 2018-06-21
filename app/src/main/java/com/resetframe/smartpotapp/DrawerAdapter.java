@@ -31,6 +31,10 @@ public class DrawerAdapter extends BaseAdapter {
         this.list_itemArrayList = list_itemArrayList;
     }
 
+    public void reFresh(ArrayList<drawerItems> list_itemArrayList){
+        this.list_itemArrayList=list_itemArrayList;
+    }
+
     @Override
     public int getCount() {
         return this.list_itemArrayList.size();
@@ -64,8 +68,23 @@ public class DrawerAdapter extends BaseAdapter {
             humedPercentView.setText("습도"+String.valueOf(list_itemArrayList.get(i).getHume())+"%");
             lightPercentView.setText("밝기"+String.valueOf(list_itemArrayList.get(i).getLight())+"lx");
 
-
         }
+        //else setText(i);
+
         return view;
     }
+
+
+    public void setText(int i){
+        nameView.setText(list_itemArrayList.get(i).getName());
+        typenameView.setText(list_itemArrayList.get(i).getTypename());
+        temperPercentView.setText("온도"+String.valueOf(list_itemArrayList.get(i).getTemper())+"'c");
+        humedPercentView.setText("습도"+String.valueOf(list_itemArrayList.get(i).getHume())+"%");
+        lightPercentView.setText("밝기"+String.valueOf(list_itemArrayList.get(i).getLight())+"lx");
+
+        System.out.println("???"+i+":"+list_itemArrayList.get(i).getTemper());
+
+        notifyDataSetChanged();
+    }
+
 }

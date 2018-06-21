@@ -23,7 +23,9 @@ public class DrawerActivity extends Activity {
 
     //private ArrayAdapter<Record> adapter; //<-나중에 부활
 
-
+    int checked = -1;
+    ArrayList <drawerItems> items;
+    DrawerAdapter adapter;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     //리스트 뷰 & 어댑터 초기화
@@ -32,11 +34,11 @@ public class DrawerActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drawer);
 
-        final ArrayList <drawerItems> items = new ArrayList<drawerItems>();
+        items = new ArrayList<drawerItems>();
 
         //final ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1,items);
 
-        final DrawerAdapter adapter = new DrawerAdapter(this,items);
+        adapter = new DrawerAdapter(this,items);
 
         final ListView listview = (ListView) findViewById(R.id.item_drawer) ;
         listview.setAdapter(adapter);
@@ -68,24 +70,29 @@ public class DrawerActivity extends Activity {
         Button detailButton = (Button)findViewById(R.id.item_detail);
         detailButton.setOnClickListener(new Button.OnClickListener(){
             public void onClick(View v){
-                int count, checked;
+                int count;
+                //int checked;
                 count = adapter.getCount();
-
-
 
                 if (count>0) {
                     checked = listview.getCheckedItemPosition();
                     Intent intent = new Intent(v.getContext(),PotInfoActivity.class);
                     //intent.putExtra("ID",UUID id);
                     //이게 최선입니까.
-                    intent.putExtra("name", items.get(count-1).getName());
-                    intent.putExtra("typename",items.get(count-1).getTypename());
-                    intent.putExtra("date",items.get(count-1).getDate());
-                    intent.putExtra("light",items.get(count-1).getLight());
-                    intent.putExtra("hume",items.get(count-1).getHume());
-                    intent.putExtra("temp",items.get(count-1).getTemper());
 
-                    startActivityForResult(intent,1);
+                    if (checked>=0) {
+                        intent.putExtra("name", items.get(checked).getName());
+                        intent.putExtra("typename", items.get(checked).getTypename());
+                        intent.putExtra("date", items.get(checked).getDate());
+                        intent.putExtra("light", items.get(checked).getLight());
+                        intent.putExtra("hume", items.get(checked).getHume());
+                        intent.putExtra("temp", items.get(checked).getTemper());
+
+                        startActivityForResult(intent, 1);
+
+                        System.out.println("count");
+                        adapter.notifyDataSetChanged();
+                    }
                 }
             }
         });
@@ -93,7 +100,8 @@ public class DrawerActivity extends Activity {
         Button deleteButton = (Button)findViewById(R.id.item_delete);
         deleteButton.setOnClickListener(new Button.OnClickListener(){
             public void onClick(View v){
-                int count, checked;
+                int count;
+                //int checked;
                 count = adapter.getCount();
 
 
@@ -116,11 +124,20 @@ public class DrawerActivity extends Activity {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode!=resultCode){
             Toast.makeText(DrawerActivity.this,"갱신에 실패하였습니다.",Toast.LENGTH_SHORT).show();
-            return;
+            //return;
         }
+        //items.get(count-1).setLight(data.getDoubleExtra("light",100));
+        drawerItems temp_items = items.get(checked);
+        //items.set(checked,temp_items).setName(data.getStringExtra("name"));
+        items.set(checked,temp_items).setTemper(99);
+        items.set(checked,temp_items).setHume(99);
+        items.set(checked,temp_items).setLight(99);
 
+        System.out.println("!!"+items.get(checked).getTemper());
+        adapter.reFresh(items);
+        adapter.setText(checked);
 
-
+        //"일단" 데이터는 갱신됨.
 
     }
 

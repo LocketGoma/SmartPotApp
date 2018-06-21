@@ -11,6 +11,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+
 import java.util.UUID;
 
 //activity_pot
@@ -72,6 +74,9 @@ public class PotInfoActivity extends Activity {
         this.humedPercentImg = (ImageView)findViewById(R.id.pot_humed_bar);
         this.temperPercentImg = (ImageView)findViewById(R.id.pot_temp_bar);
 
+        Glide.with(this).load(R.drawable.bar_light).into(lightPercentImg);
+        Glide.with(this).load(R.drawable.bar_humid).into(humedPercentImg);
+        Glide.with(this).load(R.drawable.bar_temp).into(temperPercentImg);
 
         temperPercentView.setText(String.valueOf(temper));
         humedPercentView.setText(String.valueOf(hume));
@@ -148,8 +153,7 @@ public class PotInfoActivity extends Activity {
         output_intent.putExtra("light",this.light);
         output_intent.putExtra("name",this.name);
 
-
-
+        setResult(1,output_intent);
     }
 
     @Override

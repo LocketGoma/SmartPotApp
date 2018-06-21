@@ -60,4 +60,28 @@ public class drawerItems extends LinearLayout{
     public double getLight() {
         return light;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setTypename(String typename) {
+        this.typename = typename;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public void setTemper(double temper) {
+        this.temper = temper;
+    }
+
+    public void setHume(double hume) {
+        this.hume = hume;
+    }
+
+    public void setLight(double light) {
+        this.light = light;
+    }
 }
