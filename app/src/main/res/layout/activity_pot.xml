@@ -29,7 +29,8 @@
             android:maxLines="1"
             android:textSize="30sp"
             android:textStyle="bold"
-            android:src="@drawable/default_pot" />
+            android:src="@drawable/default_pot"
+            android:onClick="onClick"/>
         <Button
             android:id="@+id/pot_next"
             android:layout_width="20dp"
