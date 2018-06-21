@@ -128,7 +128,7 @@ public class DrawerActivity extends Activity {
         }
         //items.get(count-1).setLight(data.getDoubleExtra("light",100));
         drawerItems temp_items = items.get(checked);
-        //items.set(checked,temp_items).setName(data.getStringExtra("name"));
+        items.set(checked,temp_items).setName(data.getStringExtra("name"));
         items.set(checked,temp_items).setTemper(99);
         items.set(checked,temp_items).setHume(99);
         items.set(checked,temp_items).setLight(99);

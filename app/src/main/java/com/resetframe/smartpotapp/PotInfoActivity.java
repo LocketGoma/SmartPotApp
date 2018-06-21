@@ -160,19 +160,27 @@ public class PotInfoActivity extends Activity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (data==null){
+        if (data == null) {
             Toast.makeText(PotInfoActivity.this,
                     "화분 데이터를 갱신하지 못했습니다.", Toast.LENGTH_SHORT).show();
+        } else if (resultCode == 3) {
+            double[] output = new double[3];
+            output[0] = data.getDoubleExtra("temper", temper);
+            output[1] = data.getDoubleExtra("hume", hume);
+            output[2] = data.getDoubleExtra("light", light);
+
+
+
+            System.out.println("!!" + output[0]);
+            if (!reFresh(output))
+                Toast.makeText(PotInfoActivity.this, "화분 데이터 갱신에 문제가 생겼을 가능성이 있습니다. \n 재시도 해주세요.", Toast.LENGTH_LONG).show();
+        this.imageRefresh(330 * density);
         }
-        else{
-        double [] output = new double [3];
-        output[0]=data.getDoubleExtra("temper",temper);
-        output[1]=data.getDoubleExtra("hume",hume);
-        output[2]=data.getDoubleExtra("light",light);
-        System.out.println("!!"+output[0]);
-        if(!reFresh(output))Toast.makeText(PotInfoActivity.this,"화분 데이터 갱신에 문제가 생겼을 가능성이 있습니다. \n 재시도 해주세요.",Toast.LENGTH_LONG).show();
+        else if (resultCode==4){
+            this.name = data.getStringExtra("name");
+            Toast.makeText(PotInfoActivity.this,name,Toast.LENGTH_SHORT).show();
         }
-        this.imageRefresh(330*density);
+        this.pushData();
     }
 
 

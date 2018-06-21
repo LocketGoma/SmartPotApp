@@ -18,7 +18,7 @@ import java.util.Set;
 public class PotControlActivity extends Activity {
     public static final String TAG = "PotControlActivity";
 
-    private Button sendT, sendH, sendL, sendA, getA;
+    private Button sendT, sendH, sendL, sendA, getA, getName;
     private EditText inputT, inputH, inputL;
     public static TextView dataText;
 
@@ -53,6 +53,7 @@ public class PotControlActivity extends Activity {
         inputH = findViewById(R.id.humiInput);
         inputL = findViewById(R.id.lightInput);
         dataText = findViewById(R.id.dataText);
+        getName = findViewById(R.id.name_button);
 
         blueService = new BluetoothService();
 
@@ -108,12 +109,14 @@ public class PotControlActivity extends Activity {
                     Toast.makeText(PotControlActivity.this,
                             "데이터 획득에 실패하였습니다.", Toast.LENGTH_SHORT).show();
 
+                    //-- 실제로는 지울 부분
                     Intent output_intent = new Intent();
                     output_intent.putExtra("temper",(double)20.0);
                     output_intent.putExtra("hume",(double)50.0);
                     output_intent.putExtra("light",(double)100.0);
 
                    setResult(3,output_intent);
+                   //---
                 }
                 else{
                     Intent output_intent = new Intent();
@@ -124,6 +127,18 @@ public class PotControlActivity extends Activity {
                     Toast.makeText(PotControlActivity.this,result[0]+":"+result[1]+":"+result[2],Toast.LENGTH_LONG).show();
                     setResult(3,output_intent);
                 }
+            }
+        });
+
+        getName.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                EditText editName = (EditText)findViewById(R.id.edit_name);
+                System.out.println("name:"+editName.getText());
+                Intent output_intent = new Intent();
+                output_intent.putExtra("name",editName.getText().toString());
+
+
+                setResult(4,output_intent);
             }
         });
 
